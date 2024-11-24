@@ -1,0 +1,39 @@
+{% extends 'rango_app/base.html' %}
+{% load static %}
+
+{% block title_block %}User Profiles{% endblock %}
+
+{% block body_block %}
+<div class="container">
+<h1 class="display-3">User Profiles</h1>
+
+<div class="panel">
+    {% if userprofile_list %}
+    <div class="panel-heading">
+        <!-- Display search results in an ordered list -->
+        <div class="panel-body">
+            <div class="list-group">
+                {% for listuser in userprofile_list %}
+                <div class="list-group-item">
+                    {% if listuser.picture %}
+                    <img width="64" height="64" 
+                    src="{{ MEDIA_URL}}{{listuser.picture}}"/>
+                    {% else %}
+                    <img src="https://via.placeholder.com/64x64.png?text=IMAGE">
+                    {% endif %}
+                    <h4 class="list-group-item-heading">
+                    <a href=
+                    "https://pagehouse.herokuapp.com/profile/{{listuser.user.username}}/">
+                    {{ listuser.user.username }}</a>
+                    </h4>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <p>There are no users for the site.</p>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
