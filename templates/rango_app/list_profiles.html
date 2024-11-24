@@ -23,7 +23,7 @@
                     {% endif %}
                     <h4 class="list-group-item-heading">
                     <a href=
-                    "https://pagehouse.herokuapp.com/profile/{{listuser.user.username}}/">
+                    "{% url 'rango_app:profile' listuser.user.username %}">
                     {{ listuser.user.username }}</a>
                     </h4>
                 </div>
