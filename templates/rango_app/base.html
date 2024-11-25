@@ -94,10 +94,16 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>
+        <a class="nav-link" href="{% url 'auth_password_change' %}?next='auth_password_change_done' ">Change Password</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'auth_password_change' %}?next='auth_password_change_done' ">Change Password</a>
+      <!--<a class="nav-link" href="{% url 'auth_logout' %}">Logout</a>-->
+      <form method="post" action="{% url 'auth_logout' %}?next={% url 'rango_app:index' %}">
+        {% csrf_token %}
+        <button class="btn btn-dark btn-sm nav-link" type="submit">
+          Logout
+        </button>
+      </form>
     </li>
     {% else %}
     <li class="nav-item">
